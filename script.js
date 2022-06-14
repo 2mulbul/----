@@ -2,12 +2,6 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
 
-//gsap.registerPlugin(MotionPathPlugin);
-//gsap.registerPlugin(EasePack);
-
-
-//import * as dat from 'dat.gui';
-
 /*
  * Base
  */
@@ -24,7 +18,7 @@ const near = 0.1;
 const far = 100;
 scene.background = new THREE.Color(0x000000);
 //scene.fog = new THREE.Fog(0x000000, 0.1, 50);
-//scene.fog = new THREE.FogExp2(0x000000, 0.1)
+//scene.fog = new THREE.FogExp2(0x000000, 0.05)
 
 
 // Texture
@@ -33,7 +27,7 @@ const textureLoader = new THREE.TextureLoader();
 /*
  * Models
  */
-const particleShape = new THREE.TextureLoader().load("../static/particleShape.png");
+const particleShape = new THREE.TextureLoader().load("./static/particleShape.png");
 const plyLoader = new PLYLoader();
 const material = new THREE.PointsMaterial({
     vertexColors: true,
@@ -55,12 +49,12 @@ const material2 = new THREE.PointsMaterial({
 	alphaMap: particleShape,
 	depthWrite: false
 });
-plyLoader.load('../static/models/PointCloudTest.ply', (geometry) => { 
+plyLoader.load('./static/models/PointCloudTest.ply', (geometry) => { 
 	const particles = new THREE.Points(geometry, material);
 
     scene.add(particles);
 });
-plyLoader.load('../static/models/PointCloudForest2.ply', (geometry) => { 
+plyLoader.load('./static/models/PointCloudForest2.ply', (geometry) => { 
 	const particles = new THREE.Points(geometry, material2);
 	particles.position.set(24,-10,5)
     scene.add(particles);
@@ -228,7 +222,7 @@ if (masterTl.paused) {
 const startButton = document.querySelector(".title")
 const text = startButton.querySelectorAll('span');
 var textTl = gsap.timeline({paused: true});
-textTl.to(text, { duration: 2, yPercent: 110, autoAlpha: 0, stagger: 0.05, ease: "expo.inOut" });
+textTl.to(text, { duration: 1.2, yPercent: 110, autoAlpha: 0, stagger: 0.05, ease: "expo.inOut" },0.8);
 
 // Start Event
 
@@ -303,7 +297,7 @@ const updateTime = () => {
 			let SoundVolume = (dataArray[i] + 190) / 300;
 			//let SoundVolume2 = (dataArray[i] + 190)/ 50;
 			
-			background2.material.opacity = SoundVolume*5;
+			background2.material.opacity = SoundVolume*10;
 			background2.material.size = SoundVolume;
 			//background2.material.size = SoundVolume2;
 
