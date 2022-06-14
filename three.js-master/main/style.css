@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+* {
+	margin:0;
+	padding:0;
+}
+html, body {
+	overflow: hidden;
+}
+.webgl {
+	position:fixed;
+	top:0;
+	left:0;
+	outline:none;
+}
+.titleContainer {
+	position: absolute;
+	height: 100%;
+	width:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	z-index: 2;
+}
+.title {
+	font-family: 'Playfair Display', serif;
+	display: flex;
+	color: white;
+	font-size: 100px;
+	line-height: 100%;
+	pointer-events: auto;
+	letter-spacing: 0px;
+	overflow: hidden;
+	cursor: default;
+}
+.title span {
+
+}
